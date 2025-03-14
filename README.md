@@ -1,1 +1,1 @@
-Usage: run '''python customModel.py''' in your terminal
+Usage: run *python customModel.py* in your terminal
