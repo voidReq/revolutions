@@ -1,3 +1,5 @@
+# made for APCSA, privating RIGHT after
+
 import rotate
 import sympy as sp
 
