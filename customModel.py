@@ -1,11 +1,9 @@
-# made for APCSA, privating RIGHT after
-
 import rotate
 import sympy as sp
 
 x1, x2, y1, y2, z1, z2 = -10, 10, -10, 10, -10, 10
 
-
+# Figures out which axis to rotate it about type
 def graphNow(axis, func, value):
     if axis == 'x':
         rotate.rotateX(func, value, x1, x2, y1, y2, z1, z2, axis)
@@ -34,6 +32,7 @@ def setBounds(axis):
         return
 
     match axis:
+        # bounding stuff
         case "x":
             x1, x2 = negativeBound, positiveBound
         case "y":
@@ -55,12 +54,11 @@ def main():
         print(f"Error parsing: {e}")
         return
 
-    # Ask for the axis of rotation
     axis_input = input("Which **linear** thingy you wanna rotate about? (Enter 'x=$' or 'y=$'): ").strip().lower()
 
     try:
         axis, value = axis_input.split('=')
-        axis = axis.strip()
+        axis = axis.strip() # takes the equation on the right bit
         value = float(value.strip())
     except ValueError:
         print("Invalid input. Please follow the syntax 'x=$' or 'y=$'.")
