@@ -12,7 +12,7 @@ def graphIt(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, W, Y, Z, axis)
     z_max = np.max(Z)
     z_min = np.min(Z)
 
-    # Uses whichever bounds are larger
+    # uses whichever bounds are larger
     ax_x_min = max(x_min, x1)
     ax_x_max = min(x_max, x2)
     ax_y_min = max(y_min, y1)
@@ -24,7 +24,7 @@ def graphIt(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, W, Y, Z, axis)
     ax = fig.add_subplot(111, projection='3d')
     ax.plot_surface(W, Y, Z, rstride=5, cstride=5, cmap='viridis', edgecolor='none', alpha=0.8)
 
-    # Axis limits of graph set
+    # axis limits of graph set
     ax.set_xlim(ax_x_min, ax_x_max)
     ax.set_ylim(ax_y_min, ax_y_max)
     ax.set_zlim(ax_z_min, ax_z_max)
@@ -32,7 +32,7 @@ def graphIt(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, W, Y, Z, axis)
     # not my code
     ax.set_box_aspect([1, (y2 - y1) / (x2 - x1), (z2 - z1) / (x2 - x1)])
 
-    # Dynamic labels and title
+    # dynamic labels and title
     ax.set_title(f"Revolution of ${sp.latex(equation)}$ around {axis}={radialDisplacement}")
     ax.set_xlabel("X")
     ax.set_ylabel("Y")
@@ -82,7 +82,7 @@ def graphIt(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, W, Y, Z, axis)
         ax.plot_surface(W_masked, Y_masked, Z_masked, rstride=5, cstride=5, cmap='viridis', edgecolor='none', alpha=0.8)
         # redraw
 
-        # Update limits
+        # update lims
         ax.set_xlim(ax_x_min, ax_x_max)
         ax.set_ylim(ax_y_min, ax_y_max)
         ax.set_zlim(ax_z_min, ax_z_max)
@@ -95,9 +95,9 @@ def graphIt(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, W, Y, Z, axis)
 
         fig.canvas.draw_idle()
 
-    # Connect the zoom function to the figure
+    # connect the zoom function to the figure
     fig.canvas.mpl_connect('scroll_event', zoom)
 
-    # Show the plot
+    # show the plot
     plt.ion()
     plt.show()
