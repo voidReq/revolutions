@@ -17,10 +17,7 @@ def rotateX(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, axis):
     X, Theta = np.meshgrid(x_vals, theta_vals)
 
     Y = equation_func(X)
-    Y = np.clip(Y, y1, y2)
-
-
-    Y = np.nan_to_num(Y, nan=0.0)
+    Y = np.where((Y < y1) | (Y > y2), np.nan, Y)
 
     # Rotated coordinates of the stuff
     W = (X - radialDisplacement) * np.cos(Theta) + radialDisplacement
@@ -43,8 +40,7 @@ def rotateY(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, axis):
     X, Theta = np.meshgrid(x_vals, theta_vals)
 
     Y_raw = equation_func(X)
-    Y_raw = np.nan_to_num(Y_raw, nan=0.0)
-    Y_raw = np.clip(Y_raw, y1, y2)
+    Y_raw = np.where(np.isnan(Y_raw) | (Y_raw < y1) | (Y_raw > y2), np.nan, Y_raw)
 
     W = X
     Y = Y_raw * np.cos(Theta)

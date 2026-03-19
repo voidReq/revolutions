@@ -5,12 +5,12 @@ import numpy.ma as ma  # For masking arrays
 
 
 def graphIt(equation, radialDisplacement, x1, x2, y1, y2, z1, z2, W, Y, Z, axis):
-    x_max = np.max(W)
-    x_min = np.min(W)
-    y_max = np.max(Y)
-    y_min = np.min(Y)
-    z_max = np.max(Z)
-    z_min = np.min(Z)
+    x_max = np.nanmax(W)
+    x_min = np.nanmin(W)
+    y_max = np.nanmax(Y)
+    y_min = np.nanmin(Y)
+    z_max = np.nanmax(Z)
+    z_min = np.nanmin(Z)
 
     # uses whichever bounds are larger
     ax_x_min = max(x_min, x1)
